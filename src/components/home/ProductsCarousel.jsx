@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/carousel";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 const defaultProducts = [
   {
@@ -63,14 +65,14 @@ export function ProductsCarousel({ products: productsProp, title = "Holiday Plai
         <CarouselContent className="ml-0">
           {products.map((product) => (
             <CarouselItem key={product.id} className="pl-1 basis-[30%]">
-              <div className="relative">
+              <Link to={product.link} className="relative">
                 <div className="aspect-square flex items-center justify-center relative ">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
-                  <Button className='absolute top-3 right-3' size='icon' variant='ghost'>
+                  <Button className='absolute top-3 right-3' onClick={() => toast.success(`agregaste ${product.name}`)} size='icon' variant='ghost'>
                     <Plus className="h-4 w-4 text-black" />
                   </Button>
                 </div>
@@ -79,7 +81,7 @@ export function ProductsCarousel({ products: productsProp, title = "Holiday Plai
                   <h3 className="text-sm font-normal mb-0.5">{product.name}</h3>
                   <p className="text-sm text-gray-500">{product.price}</p>
                 </div>
-              </div>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

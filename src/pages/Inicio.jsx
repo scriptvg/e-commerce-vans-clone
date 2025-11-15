@@ -15,8 +15,10 @@ import { Banner, Banner2, Banner3, Banner4, Banner4Mobile } from '@/assets/hero'
 import SK8 from '@/assets/Sk8Hi-Waterproof-Insulated-Shoe.avif'
 import KnuSkoolShoe from '@/assets/Knu-Skool-Shoe.avif'
 
+import { holiday1, holiday2, holiday3, holiday4, holiday5, holiday6 } from '@/assets/holiday'
+
 const category = [
-  { img: img1, category: "Him" },
+  { img: img1, category: "Him", link: '/category/him' },
   { img: img2, category: "Her" },
   { img: img3, category: "Kids" },
   { img: img4, category: "Fam" }
@@ -62,8 +64,21 @@ const heroSlides = [
   }
 ];
 
+const holidayPlaids = [
+  { image: holiday1, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday2, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday3, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday4, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday5, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
+]
+
 const saleProducts = [
-  { image: KnuSkoolShoe, alt: "Knu Skool Shoe", name: "Knu Skool Shoe", price: "$55.00" },
+  { image: KnuSkoolShoe, alt: "Knu Skool Shoe", name: "Knu Skool Shoe", price: "$55.00", link: '' },
   { image: SK8, alt: "Sk8 Hi-Waterproof Insulated Shoe", name: "Sk8 Hi-Waterproof Insulated Shoe", price: "$120.00" },
   { image: KnuSkoolShoe, alt: "Crosspath XC Shoe", name: "Crosspath XC Shoe", price: "$110.00" },
   { image: KnuSkoolShoe, alt: "Classic Slip-On Checkerboard", name: "Classic Slip-On Checkerboard", price: "$50.00" },
@@ -98,11 +113,14 @@ function Inicio() {
       <HeroCarousel slides={heroSlides} />
       <section className='flex flex-row gap-1 p-3'>
         {category.map((cat, index) => (
-          <div key={index} className='flex flex-col text-center'>
-            <Card className='p-0'>
-              <img src={cat.img} alt="" className='w-2xl' />
-            </Card>
-            <h1>Gifts for {cat.category}</h1>
+          <div key={index} className=''>
+            <Link to={cat.link} className='flex flex-col text-center'>
+              <Card className='p-0'>
+                <img src={cat.img} alt="" className='w-2xl' />
+              </Card>
+              <h1>Gifts for {cat.category}</h1>
+            </Link>
+
           </div>
         ))}
       </section>
@@ -113,7 +131,7 @@ function Inicio() {
           <Link to='#'>Customize Shoes</Link>
         </Button>
       </section>
-      <ProductsCarousel products={saleProducts} title='Holiday Plaids' />
+      <ProductsCarousel products={holidayPlaids} title='Holiday Plaids' />
       <FeaturedSections leftSection={leftSection} rightCarouselImages={rightCarouselImages} rightSection={rightSection} />
       <ProductsCarousel products={saleProducts} title='Get Cozy From Head To Toe' />
     </div>

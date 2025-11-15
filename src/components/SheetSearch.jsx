@@ -61,27 +61,28 @@ const featuredProducts = [
     price: '$60.00',
     salePrice: '$48.97',
     image: SK8
-  }
+  },
 ]
 
-function SheetSearch({ isScrolled }) {
+function SheetSearch({ isScrolled, isProductPage }) {
   const [searchQuery, setSearchQuery] = useState('')
 
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Search className={`h-[1.2rem] w-[1.2rem] transition-colors ${isScrolled ? "text-black dark:text-white" : "text-white"}`} />
+          <Search className={`h-[1.2rem] w-[1.2rem] transition-colors ${isScrolled || isProductPage ? "text-black dark:text-white" : "text-white"}`} />
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className='w-full h-full max-w-none sm:max-w-none p-0 border-none'>
         <div className="flex h-full">
           {/* Sidebar */}
-          <div className="hidden md:flex md:w-48 lg:w-56 border-r bg-muted/30 flex-col p-6 gap-4">
-              <Logo />
-            <div className="space-y-3">
+          <div className="hidden md:flex md:w-48 lg:w-76 flex-col">
+            <Logo />
+            <div className="space-y-3  p-6">
+              <p>Questions? We Got You.</p>
               {quickLinks.map((link, index) => (
-                <Link 
+                <Link
                   key={index}
                   to={link.href}
                   className="block text-sm hover:underline text-foreground/80 hover:text-foreground transition-colors"
@@ -95,11 +96,11 @@ function SheetSearch({ isScrolled }) {
           {/* Main Content */}
           <div className="flex-1 flex flex-col h-full overflow-hidden">
             {/* Search Header */}
-            <div className="p-4 md:p-6 border-b bg-background">
+            <div className="p-4 md:p-6 bg-background">
               <div className="flex items-center gap-3">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input 
+                  <Input
                     type="search"
                     placeholder="Search"
                     value={searchQuery}
@@ -115,7 +116,7 @@ function SheetSearch({ isScrolled }) {
                 </SheetClose>
               </div>
             </div>
-            
+
             {/* Search Results */}
             <div className="flex-1 overflow-y-auto">
               <div className="p-4 md:p-6 space-y-6">
@@ -124,7 +125,7 @@ function SheetSearch({ isScrolled }) {
                   <h3 className="text-sm font-semibold mb-3">What's Trending</h3>
                   <div className="flex flex-wrap gap-2">
                     {trendingCategories.map((category, index) => (
-                      <Badge 
+                      <Badge
                         key={index}
                         variant="secondary"
                         className="rounded-full px-4 py-1.5 text-xs font-normal cursor-pointer hover:bg-secondary/80"
@@ -138,15 +139,15 @@ function SheetSearch({ isScrolled }) {
                 {/* New For You */}
                 <div>
                   <h3 className="text-sm font-semibold mb-4">New For You</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0 md:gap-0">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-1">
                     {featuredProducts.map((product) => (
-                      <Link 
+                      <Link
                         key={product.id}
                         to={`/product/${product.id}`}
-                        className="group w-80 h-[454]"
+                        className="group w-full h-[454]"
                       >
                         <div className="bg-muted overflow-hidden mb-2">
-                          <img 
+                          <img
                             src={product.image}
                             alt={product.name}
                             className="w-full h-full object-cover transition-transform duration-300"
@@ -177,7 +178,7 @@ function SheetSearch({ isScrolled }) {
                   <h3 className="text-sm font-semibold mb-4">Discover New Looks</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 md:gap-1">
                     <Link to="/collection/classics" className="relative bg-muted overflow-hidden group cursor-pointer">
-                      <img 
+                      <img
                         src={CategoryImg}
                         alt="Classics"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -188,7 +189,7 @@ function SheetSearch({ isScrolled }) {
                       </div>
                     </Link>
                     <Link to="/collection/new-arrivals" className="relative bg-muted overflow-hidden group cursor-pointer">
-                      <img 
+                      <img
                         src={CategoryImg}
                         alt="New Arrivals"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -199,14 +200,14 @@ function SheetSearch({ isScrolled }) {
                       </div>
                     </Link>
                     <Link to="/collection/slip-on" className="relative bg-muted overflow-hidden group cursor-pointer">
-                      <img 
+                      <img
                         src={CategoryImg}
                         alt="Classic Slip On"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent" />
                       <div className="absolute bottom-4 left-4 z-10">
-                        <p className="text-white font-semibold text-base md:text-lg">Classic Slip On</p>
+                        <p className="text-white font-semibold text-base md:text-lg underline">Classic Slip On</p>
                       </div>
                     </Link>
                   </div>

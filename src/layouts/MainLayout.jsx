@@ -1,11 +1,16 @@
 import React, { useState, useRef } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '@/components/navbar'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 function MainLayout() {
   const [isScrolled, setIsScrolled] = useState(false)
   const scrollRef = useRef(null)
+  const location = useLocation()
+  
+  const isProductPage = location.pathname.startsWith('/product')
+  const isProductsPage = location.pathname === '/shop-all'
+  const isGiftPage = location.pathname === '/gift-guide'
 
   const handleScroll = (event) => {
     const scrollTop = event.target.scrollTop
@@ -14,7 +19,11 @@ function MainLayout() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar isScrolled={isScrolled} />
+      <Navbar 
+        isScrolled={isScrolled} 
+        isProductPage={isProductPage} 
+        staticMode={isProductsPage || isGiftPage}
+      />
       <ScrollArea className="h-screen w-screen" onScrollCapture={handleScroll}>
         <main>
           <Outlet />

@@ -6,12 +6,12 @@ import Logo from '@/assets/loyalty.svg'
 import LoyaltyForm from './LoyaltyForm'
 
 
-function SubscribeSheet({ isScrolled }) {
+function SubscribeSheet({ isScrolled, isProductPage }) {
   return (
     <Sheet>
       <SheetTrigger>
         <Button variant="ghost" size="icon">
-          <User className={`h-[1.2rem] w-[1.2rem] transition-colors ${isScrolled ? "text-black dark:text-white" : "text-white"}`} />
+          <User className={`h-[1.2rem] w-[1.2rem] transition-colors ${isScrolled || isProductPage ? "text-black dark:text-white" : "text-white"}`} />
         </Button>
       </SheetTrigger>
       <SheetContent className='w-full sm:max-w-md p-0 bg-background backdrop-blur-md border-none'>

@@ -52,7 +52,12 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+      className={cn(
+        "overflow-hidden text-sm",
+        "data-[state=open]:animate-accordion-down data-[state=open]:motion-opacity-in-0",
+        "data-[state=closed]:animate-accordion-up data-[state=closed]:motion-opacity-out-0",
+        className
+      )}
       {...props}>
       <div className={cn("pt-0 pb-4", className)}>{children}</div>
     </AccordionPrimitive.Content>
@@ -60,3 +65,5 @@ function AccordionContent({
 }
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+
+/* "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm" */
