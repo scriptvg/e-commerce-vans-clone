@@ -4,6 +4,7 @@ import { Inicio } from '@/pages'
 import ProductDetail from '@/pages/ProductDetail'
 import Products from '@/pages/Products'
 import Gift from '@/pages/Gift'
+import Cart from '@/pages/Cart'
 
 export const routes = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const routes = createBrowserRouter([
       {
         path: 'product/:id',
         element: <ProductDetail />
+      },
+      {
+        path: 'cart/',
+        element: <Cart />
       }
     ]
   }

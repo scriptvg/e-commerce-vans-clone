@@ -55,7 +55,7 @@ function ProductDetail({ top = false }) {
   };
 
   return (
-    <div className={`min-h-screen ${top ? 'bg-foreground/5' : ''}`}>
+    <div className={`min-h-screen mt-16`}>
       <div className="flex relative">
         {/* Galería de imágenes - scrolleable */}
         <div className="flex-1 grid grid-cols-2 gap-1 mr-1">
@@ -71,8 +71,7 @@ function ProductDetail({ top = false }) {
         </div>
 
         {/* Información del producto - sticky */}
-        <div className="w-[400px] sticky top-0 self-start border-l">
-          <div className="h-16" />
+        <div className="w-[400px] sticky top-[70px] self-start">
           <div className="space-y-6 p-4">
             <div>
               <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
@@ -162,9 +161,9 @@ function ProductDetail({ top = false }) {
               ))}
             </RadioGroupPrimitive.Root> */}
                         <div className="space-y-4 pt-4 border-t">
-              <div className="flex items-start gap-3 bg-accent p-2">
+              <div className="flex items-start gap-3 border-foreground border p-2">
                 <Truck className="w-5 h-5 mt-1 shrink-0" />
-                <div>
+                <div className="mb-2">
                   <p className="font-medium">Ship to Home</p>
                   <p className="text-sm text-muted-foreground">Standard Shipping</p>
                   <p className="text-sm text-muted-foreground">3-8 Business days</p>

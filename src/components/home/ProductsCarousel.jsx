@@ -66,7 +66,7 @@ export function ProductsCarousel({ products: productsProp, title = "Holiday Plai
           {products.map((product) => (
             <CarouselItem key={product.id} className="pl-1 basis-[30%]">
               <Link to={product.link} className="relative">
-                <div className="aspect-square flex items-center justify-center relative ">
+                <div className=" flex items-center justify-center relative ">
                   <img
                     src={product.image}
                     alt={product.name}

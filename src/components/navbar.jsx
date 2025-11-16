@@ -8,11 +8,11 @@ import SheetSearch from "./SheetSearch";
 
 const Navbar = ({ isScrolled = false, isProductPage = false, staticMode = false }) => {
   const showDarkIcons = staticMode || isScrolled || isProductPage;
-  const navBg = staticMode 
+  const navBg = staticMode
     ? "bg-background"
     : isScrolled
       ? "bg-background/95 backdrop-blur-md border-b border-border/40"
-      : isProductPage 
+      : isProductPage
         ? "bg-foreground/5"
         : "bg-transparent";
 
@@ -35,8 +35,10 @@ const Navbar = ({ isScrolled = false, isProductPage = false, staticMode = false 
             <Stars className={`h-[1.2rem] w-[1.2rem] transition-colors ${showDarkIcons ? "text-black dark:text-white" : "text-white"}`} />
           </Button>
           <SheetSearch isScrolled={showDarkIcons} isProductPage={isProductPage} />
-          <Button variant="ghost" size="icon">
-            <ShoppingCart className={`h-[1.2rem] w-[1.2rem] transition-colors ${showDarkIcons ? "text-black dark:text-white" : "text-white"}`} />
+          <Button variant="ghost" size="icon" asChild>
+            <Link to='/cart'>
+              <ShoppingCart className={`h-[1.2rem] w-[1.2rem] transition-colors ${showDarkIcons ? "text-black dark:text-white" : "text-white"}`} />
+            </Link>
           </Button>
         </div>
       </div>

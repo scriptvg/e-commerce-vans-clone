@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 function Header({ title, count, extra, onToggleFilters, showFilters }) {
   return (
-    <header className='sticky top-16 z-10 bg-background pb-4 flex flex-col gap-2'>
+    <header className='sticky top-16 z-10 bg-background pb-4  p-4 flex flex-col gap-2'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

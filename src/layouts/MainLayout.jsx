@@ -11,6 +11,7 @@ function MainLayout() {
   const isProductPage = location.pathname.startsWith('/product')
   const isProductsPage = location.pathname === '/shop-all'
   const isGiftPage = location.pathname === '/gift-guide'
+  const isCartPage = location.pathname === '/cart'
 
   const handleScroll = (event) => {
     const scrollTop = event.target.scrollTop
@@ -21,8 +22,7 @@ function MainLayout() {
     <div className="min-h-screen bg-background">
       <Navbar 
         isScrolled={isScrolled} 
-        isProductPage={isProductPage} 
-        staticMode={isProductsPage || isGiftPage}
+        staticMode={isProductsPage || isGiftPage || isProductPage || isCartPage}
       />
       <ScrollArea className="h-screen w-screen" onScrollCapture={handleScroll}>
         <main>
