@@ -9,6 +9,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { useCart } from "@/context/CartContext";
 
 const defaultProducts = [
   {
@@ -45,6 +46,17 @@ const defaultProducts = [
 
 export function ProductsCarousel({ products: productsProp, title = "Holiday Plaids" }) {
   const products = productsProp || defaultProducts;
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+    toast.success('Added to cart!', {
+      description: product.name
+    });
+  };
+
   return (
     <div className="w-full">
       <Carousel
@@ -65,14 +77,19 @@ export function ProductsCarousel({ products: productsProp, title = "Holiday Plai
         <CarouselContent className="ml-0">
           {products.map((product) => (
             <CarouselItem key={product.id} className="pl-1 basis-[30%]">
-              <Link to={product.link} className="relative">
+              <Link to={`/product/${product.id}`} className="relative">
                 <div className=" flex items-center justify-center relative ">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
-                  <Button className='absolute top-3 right-3' onClick={() => toast.success(`agregaste ${product.name}`)} size='icon' variant='ghost'>
+                  <Button 
+                    className='absolute top-3 right-3' 
+                    onClick={(e) => handleAddToCart(e, product)} 
+                    size='icon' 
+                    variant='ghost'
+                  >
                     <Plus className="h-4 w-4 text-black" />
                   </Button>
                 </div>

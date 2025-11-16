@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import { NavigationSheet } from "@/components/navigation-sheet";
 import SubscribeSheet from "./SubscribeSheet";
 import SheetSearch from "./SheetSearch";
+import { useCart } from "@/context/CartContext";
 
 const Navbar = ({ isScrolled = false, isProductPage = false, staticMode = false }) => {
+  const { getCartCount } = useCart()
+  const cartCount = getCartCount()
   const showDarkIcons = staticMode || isScrolled || isProductPage;
   const navBg = staticMode
     ? "bg-background"
@@ -35,9 +38,14 @@ const Navbar = ({ isScrolled = false, isProductPage = false, staticMode = false 
             <Stars className={`h-[1.2rem] w-[1.2rem] transition-colors ${showDarkIcons ? "text-black dark:text-white" : "text-white"}`} />
           </Button>
           <SheetSearch isScrolled={showDarkIcons} isProductPage={isProductPage} />
-          <Button variant="ghost" size="icon" asChild>
+          <Button variant="ghost" size="icon" asChild className="relative">
             <Link to='/cart'>
               <ShoppingCart className={`h-[1.2rem] w-[1.2rem] transition-colors ${showDarkIcons ? "text-black dark:text-white" : "text-white"}`} />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount > 9 ? '9+' : cartCount}
+                </span>
+              )}
             </Link>
           </Button>
         </div>

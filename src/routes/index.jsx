@@ -5,12 +5,13 @@ import ProductDetail from '@/pages/ProductDetail'
 import Products from '@/pages/Products'
 import Gift from '@/pages/Gift'
 import Cart from '@/pages/Cart'
+import Error from '@/pages/Error'
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    
+    errorElement: <Error />,
     children: [
       {
         index: true,

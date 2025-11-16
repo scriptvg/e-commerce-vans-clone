@@ -3,9 +3,21 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useCart } from '@/context/CartContext'
+import { toast } from 'sonner'
 
 function CarouselProducts({ product }) {
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const { addToCart } = useCart()
+
+  const handleAddToCart = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    addToCart(product)
+    toast.success('Added to cart!', {
+      description: product.name
+    })
+  }
 
   return (
     <div className='aspect-square'>
@@ -34,7 +46,12 @@ function CarouselProducts({ product }) {
           })}
         </CarouselContent>
 
-        <Button className='top-4 right-4 absolute z-5' size='icon' variant='ghost'>
+        <Button 
+          className='top-4 right-4 absolute z-5' 
+          size='icon' 
+          variant='ghost'
+          onClick={handleAddToCart}
+        >
           <Plus className='text-black' />
         </Button>
 
