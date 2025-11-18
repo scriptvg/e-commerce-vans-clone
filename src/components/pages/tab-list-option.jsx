@@ -34,7 +34,7 @@ export function TabListOption({ options, sizeTab }) {
         })}
         <span
           ref={underlineRef}
-          className="absolute bottom-0 left-0 h-0.5 bg-black transition-all duration-300 ease-out"
+          className="absolute bottom-0 left-0 h-0.5 bg-foreground transition-all duration-300 ease-out"
           style={{ width: 0, transform: "translateX(0)" }}
         />
       </TabsList>
