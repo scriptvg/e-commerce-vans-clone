@@ -10,42 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
-
-const defaultProducts = [
-  {
-    id: 1,
-    name: "Classic Slip-On Shoe",
-    price: "$80.00",
-    image: "/products/plaid-1.jpg",
-  },
-  {
-    id: 2,
-    name: "Bixby Plaid Flannel Shirt",
-    price: "$80.00",
-    image: "/products/plaid-2.jpg",
-  },
-  {
-    id: 3,
-    name: "Drop V Plaid Jockey Hat",
-    price: "$28.00",
-    image: "/products/plaid-3.jpg",
-  },
-  {
-    id: 4,
-    name: "Crestmont Plaid Shacket",
-    price: "$90.00",
-    image: "/products/plaid-4.jpg",
-  },
-  {
-    id: 5,
-    name: "Crestmont Plaid Shacket",
-    price: "$90.00",
-    image: "/products/plaid-4.jpg",
-  },
-];
+import { carouselDefaultProducts } from "@/data/products";
 
 export function ProductsCarousel({ products: productsProp, title = "Holiday Plaids" }) {
-  const products = productsProp || defaultProducts;
+  const products = productsProp || carouselDefaultProducts;
   const { addToCart } = useCart();
 
   const handleAddToCart = (e, product) => {

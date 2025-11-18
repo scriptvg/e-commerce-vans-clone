@@ -1,37 +1,60 @@
-import SK8 from '@/assets/Sk8Hi-Waterproof-Insulated-Shoe.avif'
-import SK82 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe (1).avif'
-import SK83 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe (3).avif'
-import SK84 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe (4).avif'
-import SK85 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe (5).avif'
-import SK86 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe (6).avif'
-import SK88 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe (2).avif'
-import SK87 from '@/assets/sk8/Sk8Hi-Waterproof-Insulated-Shoe.avif'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import { ProductGallery } from '@/components/pages/product-gallery'
 import { ProductInfo } from '@/components/pages/product-info'
 import { ProductDetailsAccordion } from '@/components/pages/product-details-accordion'
+import { baseProducts } from '@/data/products'
 
 function ProductDetail() {
+  const { id } = useParams()
+
+  const baseProduct = baseProducts.find((p) => p.id === Number(id)) || baseProducts[0]
+
+  const [selectedVariantIndex, setSelectedVariantIndex] = React.useState(0)
+
+  const variants =
+    baseProduct.variants ||
+    (baseProduct.colors && baseProduct.colors.length
+      ? baseProduct.colors.map((color) => ({
+          color,
+          isNew: baseProduct.new,
+          description: baseProduct.description,
+          images: baseProduct.image,
+        }))
+      : [
+          {
+            color: '',
+            isNew: baseProduct.new,
+            description: baseProduct.description,
+            images: baseProduct.image,
+          },
+        ])
+
+  const activeVariant = variants[selectedVariantIndex] || variants[0]
 
   const product = {
-    name: "Sk8-Hi Waterproof Insulated Shoe",
-    price: "$143.00",
-    category: "New",
-    color: "Color Leopard/Black",
-    images: [SK8, SK82, SK83, SK84, SK85, SK86, SK87, SK88],
-    colors: [
-      { name: "Black" },
-      { name: "Tan" },
-      { name: "Brown" },
-      { name: "Beige" },
-    ],
-    sizes: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12"],
-  };
+    name: baseProduct.name,
+    price: `$${baseProduct.price.toFixed(2)}`,
+    category: baseProduct.category || (activeVariant.isNew ? 'New' : ''),
+    color: activeVariant.color ? `Color ${activeVariant.color}` : '',
+    images: activeVariant.images,
+    // Para el selector de color usamos todos los variantes
+    colors: variants.map((variant) => ({ name: variant.color })),
+    // Imagen que representa cada color en el selector (primera de cada variante)
+    colorImages: variants.map((variant) => variant.images[0]),
+    sizes: baseProduct.sizes || [],
+    description: activeVariant.description,
+  }
 
   return (
     <div className="min-h-screen mt-16">
       <div className="flex relative">
         <ProductGallery images={product.images} productName={product.name} />
-        <ProductInfo product={product} />
+        <ProductInfo
+          product={product}
+          selectedColorIndex={selectedVariantIndex}
+          onSelectColor={setSelectedVariantIndex}
+        />
       </div>
       <ProductDetailsAccordion />
     </div>

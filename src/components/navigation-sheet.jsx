@@ -410,6 +410,7 @@ export const NavigationSheet = ({ isScrolling, isProductPage }) => {
                 <Button
                   key={link.name}
                   variant="link"
+                  
                   className="w-full justify-start text-muted-foreground hover:text-foreground group py-2 h-auto"
                   asChild
                 >

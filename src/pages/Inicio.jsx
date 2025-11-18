@@ -12,10 +12,7 @@ import { img1, img2, img3, img4 } from '@/assets/category'
 import { Newimg1, Newimg2, Newimg3 } from '@/assets/New'
 import { Banner, Banner2, Banner3, Banner4, Banner4Mobile } from '@/assets/hero'
 
-import SK8 from '@/assets/Sk8Hi-Waterproof-Insulated-Shoe.avif'
-import KnuSkoolShoe from '@/assets/Knu-Skool-Shoe.avif'
-
-import { holiday1, holiday2, holiday3, holiday4, holiday5, holiday6 } from '@/assets/holiday'
+import { saleProducts, holidayPlaids } from '@/data/products'
 
 const category = [
   { img: img1, category: "Him", link: '/category/him' },
@@ -63,29 +60,6 @@ const heroSlides = [
     secondaryButton: "Learn More"
   }
 ];
-
-const holidayPlaids = [
-  { image: holiday1, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday2, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday3, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday4, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday5, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-  { image: holiday6, alt: 'Classic Slip-On Shoe', name: "Classic Slip-On Shoe", price: "$60.00" },
-]
-
-const saleProducts = [
-  { image: KnuSkoolShoe, alt: "Knu Skool Shoe", name: "Knu Skool Shoe", price: "$55.00", link: '' },
-  { image: SK8, alt: "Sk8 Hi-Waterproof Insulated Shoe", name: "Sk8 Hi-Waterproof Insulated Shoe", price: "$120.00" },
-  { image: KnuSkoolShoe, alt: "Crosspath XC Shoe", name: "Crosspath XC Shoe", price: "$110.00" },
-  { image: KnuSkoolShoe, alt: "Classic Slip-On Checkerboard", name: "Classic Slip-On Checkerboard", price: "$50.00" },
-  { image: KnuSkoolShoe, alt: "Classic Slip-On Checkerboard", name: "Classic Slip-On Checkerboard", price: "$50.00" },
-  { image: KnuSkoolShoe, alt: "Classic Slip-On Checkerboard", name: "Classic Slip-On Checkerboard", price: "$50.00" }
-];
-
 
 const leftSection = {
   title: "New Live-In Sets",

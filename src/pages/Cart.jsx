@@ -1,18 +1,10 @@
 import React from 'react'
-import SK8 from '@/assets/Sk8Hi-Waterproof-Insulated-Shoe.avif'
 import { ProductsCarousel } from '@/components/home/ProductsCarousel'
 import { useCart } from '@/context/CartContext'
 import { CartEmpty } from '@/components/pages/cart-empty'
 import { CartItem } from '@/components/pages/cart-item'
 import { CartSummary } from '@/components/pages/cart-summary'
-
-const frequentlyBought = [
-  { id: 1, name: 'Drop V Plaid Jockey Hat', price: 28.00, image: SK8 },
-  { id: 2, name: 'Vans Drop V Crew Socks', price: 10.00, image: SK8 },
-  { id: 3, name: 'Skate Snapback Hat', price: 30.00, image: SK8 },
-  { id: 4, name: 'Skate Crew Socks by Ath...', price: 10.00, image: SK8 },
-  { id: 5, name: 'Havenrock Crew Socks', price: 10.00, image: SK8 }
-]
+import { frequentlyBought } from '@/data/products'
 
 function Cart() {
   const { cartItems, updateQuantity, removeFromCart, updateShippingMethod, updateItemDetails, getCartTotal, getCartCount } = useCart()
